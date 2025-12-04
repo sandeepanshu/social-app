@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { takeLatest, put, call } from "redux-saga/effects";
 import { POST_ACTIONS } from "./post.types";
 
@@ -13,7 +14,6 @@ const {
 } = POST_ACTIONS;
 
 import {
-  
   type CreatePostPayload,
   type LikePayload,
   type DislikePayload,
@@ -157,14 +157,13 @@ function* handleDeleteComment(action: { payload: DeleteCommentPayload }) {
   }
 }
 
-
 export function* postSaga() {
-  yield takeLatest(CREATE_POST, handleCreatePost);
-  yield takeLatest(GET_ALL_POSTS, handleGetAllPosts);
-  yield takeLatest(LIKE_POST, handleLikePost);
-  yield takeLatest(DISLIKE_POST, handleDislikePost);
-  yield takeLatest(DELETE_POST, handleDeletePost);
-  yield takeLatest(GET_POST, handleGetPost);
-  yield takeLatest(CREATE_COMMENT, handleCreateComment);
-  yield takeLatest(DELETE_COMMENT, handleDeleteComment);
+  yield takeLatest(CREATE_POST as any, handleCreatePost);
+  yield takeLatest(GET_ALL_POSTS as any, handleGetAllPosts);
+  yield takeLatest(LIKE_POST as any, handleLikePost);
+  yield takeLatest(DISLIKE_POST as any, handleDislikePost);
+  yield takeLatest(DELETE_POST as any, handleDeletePost);
+  yield takeLatest(GET_POST as any, handleGetPost);
+  yield takeLatest(CREATE_COMMENT as any, handleCreateComment);
+  yield takeLatest(DELETE_COMMENT as any, handleDeleteComment);
 }
