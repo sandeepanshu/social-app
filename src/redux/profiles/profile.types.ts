@@ -22,7 +22,7 @@ export interface CreateProfileRequest {
   bio: string;
   githubUsername: string;
 
-  social: {
+  social?: {
     youtube?: string;
     facebook?: string;
     twitter?: string;

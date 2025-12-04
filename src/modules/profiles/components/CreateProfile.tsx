@@ -89,7 +89,7 @@ const CreateProfile: React.FC = () => {
       website: values.website,
       location: values.location,
       designation: values.designation,
-      skills: values.skills,
+      skills: values.skills.split(",").map((s) => s.trim()),
       bio: values.bio,
       githubUsername: values.githubUsername,
       youtube: values.youtube ?? "",
@@ -101,6 +101,7 @@ const CreateProfile: React.FC = () => {
 
     const payload: SubmitProfilePayload = {
       profile: request,
+      navigate,
     };
 
     dispatch({ type: CREATE_PROFILE, payload });

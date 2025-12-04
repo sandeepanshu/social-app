@@ -282,7 +282,7 @@ const Dashboard: React.FC = () => {
           </Card>
 
           {/* SKILLS */}
-          {profile?.skills?.length > 0 && (
+          {(profile?.skills ?? []).length > 0 && (
             <Card
               title="Skills"
               style={{
@@ -292,7 +292,7 @@ const Dashboard: React.FC = () => {
               }}
             >
               <Space wrap>
-                {profile?.skills?.map((skill: string, i: number) => (
+                {(profile?.skills ?? []).map((skill: string, i: number) => (
                   <Tag
                     key={i}
                     color="blue"
