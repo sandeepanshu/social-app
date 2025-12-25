@@ -1,13 +1,13 @@
-// src/components/developers/DeveloperList.tsx
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Row, Col, Avatar, Typography, Button, Spin } from "antd";
+import { Card, Row, Col, Avatar, Typography, Button } from "antd";
 import { UserOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 import type { RootState } from "../../../redux/store";
 import type { IDeveloper } from "../../developers/models/IDeveloper";
 import { FETCH_ALL_DEVELOPERS } from "../../../redux/developers/developer.types";
+import Spinner from "../../../layout/util/Spinner";
 
 const { Title, Text } = Typography;
 
@@ -54,9 +54,8 @@ const DeveloperList: React.FC = () => {
           LOADING SPINNER
       ---------------------------------------------- */}
       {loading ? (
-        <div style={{ marginTop: 40, textAlign: "center" }}>
-          <Spin size="large" />
-        </div>
+          <Spinner size="large" />
+    
       ) : (
         <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
           {developers && developers.length ? (

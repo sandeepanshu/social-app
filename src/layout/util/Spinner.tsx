@@ -16,13 +16,11 @@ const Spinner: React.FC<SpinnerProps> = ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "200px",
+        height: "100vh",
         width: "100%",
       }}
     >
-      <Spin tip={tip} size={size}>
-        <div style={{ width: 0, height: 0 }} />
-      </Spin>
+      <Spin tip={tip} size={size} />
     </div>
   );
 };

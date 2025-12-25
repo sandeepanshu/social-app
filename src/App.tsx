@@ -52,14 +52,7 @@ const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   if (loading) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
+      <div>
         <Spinner tip="Loading..." />
       </div>
     );
@@ -100,19 +93,7 @@ const App: React.FC = () => {
      Show app loading screen during auth refresh
   --------------------------------------------- */
   if (userLoading && UserUtil.getToken()) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          backgroundColor: "#f0f2f5",
-        }}
-      >
-        <Spinner tip="Loading application..." />
-      </div>
-    );
+    return <Spinner tip="Loading application..." />;
   }
 
   /* ==========================================================================

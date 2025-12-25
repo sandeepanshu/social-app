@@ -1,4 +1,3 @@
-// src/components/developers/DeveloperDetails.tsx
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +9,6 @@ import {
   Typography,
   Tag,
   Divider,
-  Spin,
 } from "antd";
 import {
   UserOutlined,
@@ -20,6 +18,7 @@ import {
 import type { RootState } from "../../../redux/store";
 import type { IDeveloper } from "../../developers/models/IDeveloper";
 import { FETCH_DEVELOPER } from "../../../redux/developers/developer.types";
+import Spinner from "../../../layout/util/Spinner";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -41,7 +40,7 @@ const DeveloperDetails: React.FC = () => {
   if (loading || !selectedDeveloper) {
     return (
       <div style={{ textAlign: "center", padding: 40 }}>
-        <Spin size="large" />
+        <Spinner size="large" />
       </div>
     );
   }

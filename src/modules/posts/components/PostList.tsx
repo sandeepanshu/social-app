@@ -175,7 +175,7 @@ const PostList: React.FC = () => {
           >
             {postsLoading ? (
               <div style={{ textAlign: "center", padding: 40 }}>
-                <Spinner tip="Loading posts..." />
+                <Spinner/>
               </div>
             ) : posts.length === 0 ? (
               <Empty description="No posts yet" />

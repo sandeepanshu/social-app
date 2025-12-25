@@ -156,7 +156,7 @@ const Dashboard: React.FC = () => {
     },
   ];
 
-  if (loading || profileLoading) return <Spinner tip="Loading dashboard..." />;
+  if (loading || profileLoading) return <Spinner tip="Loading..." />;
 
   return (
     <div
