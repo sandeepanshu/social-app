@@ -16,7 +16,6 @@ import {
 
 import {
   TeamOutlined,
-  CodeOutlined,
   UserOutlined,
   LogoutOutlined,
   ProfileOutlined,
@@ -33,6 +32,25 @@ import { toggleTheme } from "../../redux/theme/theme.slice";
 
 const { Header } = Layout;
 const { useBreakpoint } = Grid;
+
+const NexusLogo = () => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#6366F1" />
+    <path
+      d="M10 22V10L22 22V10"
+      stroke="white"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const NavBar: React.FC = () => {
   const dispatch = useDispatch();
@@ -109,16 +127,17 @@ const NavBar: React.FC = () => {
           to="/"
           style={{
             color: "#fff",
-            fontSize: 18,
-            fontWeight: 700,
-            marginRight: 16,
+            fontSize: 22,
+            fontWeight: 800,
+            marginRight: 24,
             display: "flex",
             alignItems: "center",
-            gap: 8,
+            gap: 10,
+            letterSpacing: "-0.5px",
           }}
         >
-          <CodeOutlined />
-          {!screens.xs && "React Social"}
+          <NexusLogo />
+          {!screens.xs && <span>Nexus</span>}
         </NavLink>
 
         {/* Desktop Menu */}
@@ -169,11 +188,7 @@ const NavBar: React.FC = () => {
               </div>
             ) : (
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                <Avatar
-                  src={user?.avatar}
-                  icon={<UserOutlined />}
-                  size={36}
-                />
+                <Avatar src={user?.avatar} icon={<UserOutlined />} size={36} />
                 <span style={{ color: "#fff", fontWeight: 600 }}>
                   {user?.name}
                 </span>
@@ -195,17 +210,17 @@ const NavBar: React.FC = () => {
 
       <div style={{ marginTop: 64 }} />
 
-      {/* ============================
-            MOBILE PREMIUM DRAWER
-        ============================ */}
+      {/* MOBILE DRAWER */}
       <Drawer
         placement="left"
         open={open}
         onClose={closeDrawer}
         width={290}
-        bodyStyle={{
-          padding: 0,
-          background: themeMode === "dark" ? "#0d1117" : "#ffffff",
+        styles={{
+          body: {
+            padding: 0,
+            background: themeMode === "dark" ? "#0d1117" : "#ffffff",
+          },
         }}
       >
         {/* Beautiful Profile Header */}
@@ -220,6 +235,18 @@ const NavBar: React.FC = () => {
             textAlign: "left",
           }}
         >
+          <div
+            style={{
+              marginBottom: 20,
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+            }}
+          >
+            <NexusLogo />
+            <span style={{ fontSize: 20, fontWeight: 800 }}>Nexus</span>
+          </div>
+
           <Avatar
             src={user?.avatar}
             icon={<UserOutlined />}
@@ -232,13 +259,13 @@ const NavBar: React.FC = () => {
 
           {isAuthenticated ? (
             <>
-              <h3 style={{ margin: 0 }}>{user?.name}</h3>
+              <h3 style={{ margin: 0, color: "#fff" }}>{user?.name}</h3>
               <p style={{ opacity: 0.8, marginTop: 4 }}>
-                {user?.email || "Logged In User"}
+                {user?.email || "Nexus Member"}
               </p>
             </>
           ) : (
-            <h3>Welcome 👋</h3>
+            <h3 style={{ color: "#fff" }}>Welcome to Nexus 👋</h3>
           )}
         </div>
 
@@ -260,8 +287,8 @@ const NavBar: React.FC = () => {
                   selectedKey === item.key
                     ? "#1890ff"
                     : themeMode === "dark"
-                    ? "#cbd5e1"
-                    : "#111",
+                      ? "#cbd5e1"
+                      : "#111",
                 background:
                   selectedKey === item.key
                     ? themeMode === "dark"
